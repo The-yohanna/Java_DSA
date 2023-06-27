@@ -5,10 +5,6 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        String test = "tea";
-        char[] tests = test.toCharArray();
-        Arrays.sort(tests);
-
-        System.out.println(tests);
+        System.out.println(Arrays.toString(HTSolutions.twoSum(new int[]{2, 7, 11, 15}, 9)));
     }
 }

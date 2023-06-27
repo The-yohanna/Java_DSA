@@ -1,8 +1,6 @@
 package hashtable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class HTSolutions {
     public static boolean itemInCommon(int[] array1, int[] array2) {
@@ -47,5 +45,42 @@ public class HTSolutions {
         }
 
         return null;
+    }
+
+    public static List<List<String>> groupAnagrams(String[] strings) {
+        Map<String, List<String>> anagramGroups = new HashMap<>();
+
+        for (String str : strings) {
+            char[] strChar = str.toCharArray();
+            Arrays.sort(strChar);
+            String anagram = String.valueOf(strChar);
+
+            if (!anagramGroups.containsKey(anagram)){
+                List<String> anagramGroup = new ArrayList<>();
+                anagramGroup.add(str);
+                anagramGroups.put(anagram, anagramGroup);
+            } else {
+                anagramGroups.get(anagram).add(str);
+            }
+        }
+
+        return new ArrayList<>(anagramGroups.values());
+    }
+
+    public static int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> numMap = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int num = nums[i];
+            int complement = target - num;
+
+            if (numMap.containsKey(complement)) {
+                return new int[] {numMap.get(complement), i};
+            } else {
+                numMap.put(num, i);
+            }
+        }
+
+        return new int[] {};
     }
 }
