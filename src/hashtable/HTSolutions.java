@@ -83,4 +83,77 @@ public class HTSolutions {
 
         return new int[] {};
     }
+
+    public static int[] subarraySum(int[] nums, int target) {
+        Map<Integer, Integer> sumIndex = new HashMap<>();
+        sumIndex.put(0,-1); //cumulative sum before the start of the array
+        int currentSum = 0;
+
+        for (int i = 0; i < nums.length; i++){
+            currentSum += nums[i];
+            if (sumIndex.containsKey(currentSum - target)) {
+                return new int[] {sumIndex.get(currentSum - target) + 1, i};
+            } else {
+                sumIndex.put(currentSum, i);
+            }
+        }
+        return new int[] {};
+    }
+
+    public static List<Integer> removeDuplicates(List<Integer> myList) {
+        Set<Integer> mySet = new HashSet<>(myList);
+        return new ArrayList<>(mySet);
+    }
+
+    public static boolean hasUniqueChars(String string) {
+        char[] strChars = string.toCharArray();
+        Set<String> uniqueChars = new HashSet<>();
+        for (char x : strChars) {
+            uniqueChars.add(String.valueOf(x));
+        }
+        return strChars.length == uniqueChars.size();
+    }
+
+    public static List<int[]> findPairs(int[] arr1, int[] arr2, int target) {
+        Set<Integer> set = new HashSet<>();
+        List<int[]> pairs = new ArrayList<>();
+
+        for (int x : arr1) {
+            set.add(x);
+        }
+
+        for (int y : arr2) {
+            int complement = target - y;
+            if (set.contains(complement)) {
+                pairs.add(new int[] {complement, y});
+            }
+        }
+
+        return pairs;
+    }
+
+    public static int longestConsecutiveSequence(int[] nums) {
+        Set<Integer> numSet = new HashSet<>();
+        for (int num : nums) {
+            numSet.add(num);
+        }
+
+        int longestStreak = 0;
+
+        for (int num : numSet) {
+            if (!numSet.contains(num - 1)) {
+                int currentNum = num;
+                int currentStreak = 1;
+
+                while (numSet.contains(currentNum + 1)) {
+                    currentNum++;
+                    currentStreak++;
+                }
+
+                longestStreak = Math.max(longestStreak, currentStreak);
+            }
+        }
+
+        return longestStreak;
+    }
 }

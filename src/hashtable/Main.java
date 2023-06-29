@@ -1,10 +1,16 @@
 package hashtable;
 
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(HTSolutions.twoSum(new int[]{2, 7, 11, 15}, 9)));
+        int[] arr1 = {1, 2, 3, 4, 5};
+        int[] arr2 = {2, 4, 6, 8, 10};
+        int target = 7;
+
+        List<int[]> pairs = HTSolutions.findPairs(arr1, arr2, target);
+        for (int[] pair : pairs) {
+            System.out.println(Arrays.toString(pair));
+        }
     }
 }
