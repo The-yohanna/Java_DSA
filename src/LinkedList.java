@@ -105,24 +105,16 @@ public class LinkedList {
         return temp;
     }
 
-    public void getHead() {
-        if (head == null) {
-            System.out.println("Head: null");
-        } else {
-            System.out.println("Head: " + head.value);
-        }
+    public Node getHead() {
+        return head;
     }
 
-    public void getTail() {
-        if (head == null) {
-            System.out.println("Tail: null");
-        } else {
-            System.out.println("Tail: " + tail.value);
-        }
+    public Node getTail() {
+        return tail;
     }
 
-    public void getLength() {
-        System.out.println("Length: " + length);
+    public int getLength() {
+        return length;
     }
 
     public Node removeFirst() {
@@ -311,6 +303,34 @@ public class LinkedList {
             temp = temp.next;
         }
         tail = temp;
+    }
+
+    //    merging two linked lists using MergeSort
+    public void merge(LinkedList otherList) {
+        Node otherHead = otherList.getHead();
+        Node dummy = new Node(0);
+        Node current = dummy;
+
+        while (head != null && otherHead != null) {
+            if (head.value < otherHead.value) {
+                current.next = head;
+                head = head.next;
+            } else {
+                current.next = otherHead;
+                otherHead = otherHead.next;
+            }
+            current = current.next;
+        }
+
+        if (head != null) {
+            current.next = head;
+        } else {
+            current.next = otherHead;
+            tail = otherList.getTail();
+        }
+
+        head = dummy.next;
+        length += otherList.getLength();
     }
 
 }
