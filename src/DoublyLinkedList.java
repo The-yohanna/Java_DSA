@@ -156,7 +156,7 @@ public class DoublyLinkedList {
         before.next = newNode;
         after.prev = newNode;
         length++;
-        return  true;
+        return true;
     }
 
     public Node remove(int index) {

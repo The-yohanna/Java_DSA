@@ -1,5 +1,11 @@
 package binarysearchtree;
 
+import java.text.NumberFormat;
+import java.time.Duration;
+
+import static java.time.temporal.ChronoUnit.HOURS;
+import static java.util.Locale.US;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -17,5 +23,12 @@ public class Main {
         System.out.println(myBST.DFSPreOrder());
         System.out.println(myBST.DFSPostOrder());
         System.out.println(myBST.DFSInOrder());
+
+        Duration hours = Duration.of(6, HOURS);
+
+        System.out.println(hours.toHours());
+
+        NumberFormat format = NumberFormat.getCurrencyInstance(US);
+        System.out.println(format.format(35.00));
     }
 }

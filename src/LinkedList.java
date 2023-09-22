@@ -216,7 +216,7 @@ public class LinkedList {
 
         Node current = prev.next;
 
-        for (int i = 0; i < (n -m); i++) {
+        for (int i = 0; i < (n-m); i++) {
             Node temp = current.next;
             current.next = temp.next;
             temp.next = prev.next;
